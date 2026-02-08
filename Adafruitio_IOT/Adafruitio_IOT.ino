@@ -15,8 +15,10 @@
 
 // -------- Pins --------
 #define DHT_DATA_PIN   26
+#define DHT_POWER_PIN  14
 #define DHTTYPE        DHT11
 
+#define SOIL_POWER_PIN 32
 #define SOIL_AO_PIN    34
 
 #define MQ2_AO_PIN     35
@@ -55,6 +57,12 @@ void mqtt_connect() {
 // -------- SETUP --------
 void setup() {
   Serial.begin(9600);
+
+  pinMode(DHT_POWER_PIN, OUTPUT);
+  digitalWrite(DHT_POWER_PIN, HIGH);
+
+  pinMode(SOIL_POWER_PIN, OUTPUT);
+  digitalWrite(SOIL_POWER_PIN, HIGH);
 
   dht.begin();
 
